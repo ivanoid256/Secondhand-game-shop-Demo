@@ -1,0 +1,52 @@
+{% extends 'customer/shopwindow.html.twig' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/shopping-cart.css') }}" media="all" />
+	<link rel="stylesheet" href="{{ asset('css/list-entity.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+<div class="shopping-cart">
+	<h3>Shopping cart:</h3>
+    		
+    {% set sum = 0 %}
+    {% for shopCartSeller in sellers %}
+    {% set seller = shopCartSeller.seller %}
+    <div id="shoppingCartSeller{{ seller.id }}" class="shoppingCartSeller">
+    <h4 id="seller" class="seller">
+    	<a href="{{ path('seller_show', {'id':seller.id}) }}">{{ seller.username }}</a>
+    </h4>	
+    		<table class="seller-tbl">
+    			  <tr>
+    			    <td><a href="{{ path('seller_show', {'id':seller.id}) }}"><span>Seller: </span>{{ seller.username }}</a></td>
+    			    <td><span>BankAccount:</span> {{ seller.bankAccount }}</td>
+    			  </tr>
+    		</table>
+    		
+    			<div class="scSellerGames">
+    				{% for ShopCartGame in shopCartSeller.games %}
+    					{% set game = ShopCartGame.game %}
+    					{% set sum = sum+game.price %}
+    					{{ include('game/game.html.twig', { 'game': game, 'ref': 1 }) }}
+    				{% endfor %}
+    			</div>
+    </div>
+    {% endfor %}	
+    		<h2 class="total-sum">Total Sum: {{ sum }}</h2>
+    		<form class="purchase-form" method="post" action="{{ path('new_order') }}">
+    			<label >
+    				<input checked="checked" type="radio" name="payServiceId" value="1"> PayService 1
+    			</label>
+    			{# <input type="hidden" name="shopCartSellerId" value="{{ shopCartSeller.id }}"> #}
+    			<input type="submit" value="Purchase">
+    		</form>
+    		
+    	 {#   {{ form_start(form) }}
+    	    {{ form_widget(form) }}
+    	{{ form_end(form) }} #}
+</div>
+	
+{% endblock %}

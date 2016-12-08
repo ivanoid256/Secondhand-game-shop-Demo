@@ -1,0 +1,54 @@
+{% extends 'seller/sellerBase.html.twig' %}
+
+{% form_theme form _self %}
+
+{% block checkbox_radio_label %}
+    {# Do not display the label if widget is not defined in order to prevent double label rendering #}
+    {% if widget is defined %}
+        {% if required %}
+            {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' required')|trim}) %}
+        {% endif %}
+        {% if parent_label_class is defined %}
+            {% set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' ' ~ parent_label_class)|trim}) %}
+        {% endif %}
+        {% if label is not same as(false) and label is empty %}
+            {% set label = name|humanize %}
+        {% endif %}
+        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+            {{- widget|raw }} 
+            <img style="height: 150px;" src="{{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}">
+        </label>
+    {% endif %}
+{% endblock checkbox_radio_label %}
+
+{% block body %}
+<h1>Select Main Image </h1>
+<div id="selectMainImage">
+    {{ form_start(form) }}
+    	{{ form_widget(form) }} 
+    {# 
+    {% set index = 0 %}
+    <table>
+    <tbody>
+    {% for choice in form.Image.vars.choices %}     
+    
+    <tr>
+    <td>
+    <div class="checkbox">                                                            
+        <label class=""><input type="checkbox" id="{{ form.Genre.vars.id~'_'~index }}" name="{{ form.Genre.vars.full_name~'[]' }}" 
+        	value="{{ choice.value }}" /> {{ choice.label }}</label>
+    </div>
+    </td>
+
+	</tr>
+    {% set index = index + 1 %}
+    {% endfor %}	
+	</tbody>
+    </table>
+    </div></div>, {'render_rest': false} 
+    	{{ form_row(form.Select) }}
+    #}
+    {{ form_end(form) }}
+</div>
+<br>
+{% endblock %}

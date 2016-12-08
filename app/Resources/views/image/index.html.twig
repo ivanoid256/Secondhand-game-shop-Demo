@@ -1,0 +1,53 @@
+{% extends 'main.html.twig' %}
+
+{% block title %} Manage {{ game.name }} Game Images {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/seller/manage-game-images.css') }}" media="all" />
+{% endblock %}
+
+{% block body %}
+
+	<div class="manage-images common-block">
+		<div class="manage-images-header">
+			<h3>Manage {{ game.name }} Game Images</h3>
+			<div class="upload-images">
+				{{ form_start(form,{'attr':{'class':'upload-image-form'}}) }}
+					{{ form_widget(form) }}
+				{{ form_end(form) }}
+			</div>
+		</div>
+		
+		<div class="images">
+			{{ form_start(delete_form) }}
+				{{ form_widget(delete_form) }}
+			{{ form_end(delete_form) }}
+		</div>
+		
+	</div>
+
+{# 	<div class="manage-images common-block">#}
+{# 		<div class="manage-images-header">#}
+{# 			<h3>Manage {{ game.name }} Game Images</h3>#}
+{# 		</div>#}
+		
+{# 		<div class="images">#}
+{# 			<form class="images-list-form" method="post" action="{{ path('manage_game_images',{'id':game.id}) }}">#}
+{# 			<ul class="mi-ul">#}
+{# 			{% for image in images %}#}
+{# 				<li class="mi-li">#}
+{# 					<a class="mi-full-size-ref" href="{{ image.srcRef }}">show in full size</a>#}
+{# 					<input id="mi-checkbox{{ loop.index }}" type="checkbox" class="mi-checkbox" />#}
+{# 					<label for="mi-checkbox{{ loop.index }}" class="mi-label">#}
+{# 						<img src="{{ image.srcRef }}" alt="{{ image.name }}" class="mi-image" />#}
+{# 					</label>#}
+{# 				</li>#}
+{# 			{% endfor %}#}
+{# 			</ul>#}
+{# 			<button type="submit">Delete Selected Images</button>#}
+{# 			</form>#}
+{# 		</div>#}
+		
+{# 	</div>#}
+{% endblock %}

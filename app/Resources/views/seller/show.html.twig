@@ -1,0 +1,96 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %} Seller: {{ seller.username}} {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin/seller.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+    <h3>Seller: {{ seller.username }}</h3>
+
+<div class="seller-card">
+    	<table class="vertical-attr">
+    	    <tbody>
+    	        <tr>
+    	            <th>Name</th>
+    	            <td>{{ seller.username }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Email</th>
+    	            <td>{{ seller.email }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Balance</th>
+    	            <td>{{ seller.balance }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Bankaccount</th>
+    	            <td>{{ seller.bankAccount }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Status</th>
+    	            <td>{{ seller.status }}</td>
+    	        </tr>
+    	    </tbody>
+    	</table>
+    	<h3>Games:</h3>
+    	<div class="seller-games btn-style-href">
+    	{% for game in seller.games %}
+    		<a href="{{ path('game_show',{"id":game.id}) }}">{{ game.name }}</a>
+    	{% endfor %}
+    	</div>
+    	<h3>Orders:</h3>
+    	<div class="seller-orders btn-style-href">
+    	{% for order in seller.orders %}
+    		<a href="{{ path('admin_order',{"id":order.id}) }}">{{ order.orderNumber }}</a>
+    	{% endfor %}
+    	</div>
+    	<h3>Received Comments:</h3>
+    	<div class="common-block seller-to-comments">
+    		{% for comment in seller.toComments %}
+    		<div class="comment-box btn-style-href common-block">
+				<div class="from-to">
+					<span class="from">From: <a href="#">{{ comment.from.username }}</a> </span>
+					<span class="to">To: <a href="#">{{ comment.to.username }}</a> </span>
+				</div>
+				<div class="comment">{{ comment.text }}</div>
+			</div>
+    		{% endfor %}
+    	</div>
+		<h3>Sended Comments:</h3>
+    	<div class="common-block seller-from-comments">
+    		{% for comment in seller.fromComments %}
+    		<div class="comment-box btn-style-href common-block">
+				<div class="from-to">
+					<span class="from">From: <a href="#">{{ comment.from.username }}</a> </span>
+					<span class="to">To: <a href="#">{{ comment.to.username }}</a> </span>
+				</div>
+				<div class="comment">{{ comment.text }}</div>
+			</div>
+			{% else %}
+			<div class="empty-comments">
+				<span>There're no comments yet!</span>
+			</div>
+    		{% endfor %}
+    	</div>
+    	<div class="common-block comment-form"><a name="#comment_text"></a>
+    	    	{{ render(controller('AppBundle:Comment:messageToSeller',{'id':seller.id})) }}
+    	</div>
+    </div>
+
+{#     <ul>#}
+{#         <li>#}
+{#             <a href="{{ path('seller_index') }}">Back to the list</a>#}
+{#         </li>#}
+{#         <li>#}
+{#             <a href="{{ path('seller_edit', { 'id': seller.id }) }}">Edit</a>#}
+{#         </li>#}
+{#         <li>#}
+{#             {{ form_start(delete_form) }}#}
+{#                 <input type="submit" value="Delete">#}
+{#             {{ form_end(delete_form) }}#}
+{#         </li>#}
+{#     </ul>#}
+{% endblock %}

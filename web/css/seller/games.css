@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+#add-game{
+	
+margin: 5px;
+	
+background-color: #E91E63;
+}
+#add-game:hover{
+	
+background-color: hsla(340,82%,45%,1);
+}
+
+.my-games .id{
+	width: 3%;
+}
+table.my-games{table-layout: fixed;text-align: left;}
+
+.my-games td{
+	text-overflow: ellipsis;
+}
+
+.my-games .edit{
+
+width: 5%;
+}
+.my-games .price{
+
+width: 7%;
+}
+.my-games .name{
+
+width: 22%;
+}
+.my-games .genre{
+
+width: 15%;
+}
+.my-games .status{
+
+}
+.my-games .order{
+	
+}

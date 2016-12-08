@@ -1,0 +1,14 @@
+{% extends 'seller/sellerBase.html.twig' %}
+
+{% block title %} Register as Seller {% endblock %}
+
+{% block body %}
+<div id="sellerRegistration" class="sellerRegistration">
+    <h1>Fill all fields below:</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Register" />
+    {{ form_end(form) }}
+</div>
+{% endblock %}

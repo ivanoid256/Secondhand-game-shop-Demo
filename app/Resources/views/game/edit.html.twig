@@ -1,0 +1,28 @@
+{% extends 'seller/base.html.twig' %}
+
+{% block title %} Edit Game {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/seller/add-game.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+    <div class="add-game common-block">
+    	<div class="edit-game-header btn-style-href green-hover-href">
+    		<h3>Game edit</h3>    		
+    		<a href="{{ path('manage_game_images',{'id':game.id}) }}">Manage Images</a>
+    		<a href="{{ path('select_main_image',{'id':game.id}) }}">Change Main(Title) Image</a>
+    	</div>
+    	
+    	{{ form_start(edit_form) }}
+    	    {{ form_widget(edit_form) }}
+    	{{ form_end(edit_form) }}
+    </div>
+
+    <div class="delete-game common-block">
+        {{ form_start(delete_form) }}
+        	<input type="submit" value="Delete" class="game-delete-btn" disabled>
+		{{ form_end(delete_form) }}
+   </div>
+{% endblock %}

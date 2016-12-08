@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Image creation</h1>
+
+    {{ form_start(form, {'action': path('seller_image_new', {"id":gameId}), 'method': 'POST'}) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('seller_image_index', {"id":gameId}) }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

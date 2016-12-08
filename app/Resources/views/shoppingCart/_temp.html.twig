@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %} Shopping Cart! {% endblock %}
+{% block body %}
+    <h1>Shopping Cart</h1>
+
+    <table>
+        <thead>
+            <tr>
+            	<th>Name</th>
+            	<th>Seller</th>
+            	<th>Genre</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Issold</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for game in games %}
+        {% set game = game.game %}
+            <tr>
+                <td><a href="{{ path('game_show', { 'id': game.id }) }}">{{ game.name }}</a></td>
+                <td>{{ game.seller.username }}
+                <td>{{ game.genre }}</td>           
+                <td>{{ game.price }}</td>
+                <td>{{ game.description }}</td>
+                <td>{% if game.isSold %}Yes{% else %}No{% endif %}</td>
+                <td><a href="{{ path('remove_game_from_shopping_cart',{'id': game.id}) }}">RemoveFromSC</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

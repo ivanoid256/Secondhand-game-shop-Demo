@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Image</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ image.id }}</td>
+            </tr>
+            <tr>
+                <th>Srcref</th>
+                <td><a href="{{ asset('uploads/images/' ~ image.name) }}">{{ image.name }}</a></td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img style="width: 300px; height: 200px;" alt="{{ image.name }}" src="{{ asset('uploads/images/'~image.name) }}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+          {# <a href="{{ path('seller_image_index') }}">Back to the list</a>#}
+        </li>
+        <li>
+            <a href="{{ path('seller_image_edit', { 'id': image.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

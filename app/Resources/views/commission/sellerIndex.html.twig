@@ -1,0 +1,18 @@
+{% extends 'seller/base.html.twig' %}
+{% block title %} My Orders{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/seller/orders.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+	<div class="my-orders">
+		<h3>My Orders</h3>
+		<div class="orders">
+			{% for order in orders %}
+				{{ include('commission/seller_list_order.html.twig',{'order':order}) }}
+			{% endfor %}		
+		</div>
+	</div>
+{% endblock %}

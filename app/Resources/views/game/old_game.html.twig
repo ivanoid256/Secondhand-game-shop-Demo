@@ -1,0 +1,38 @@
+{#
+<tr>
+    <td><a href="{{ path('game_show', { 'id': game.id }) }}">{{ game.name }}</a></td>
+    <td>{{ game.seller.username }}
+    <td>{{ game.genre }}</td>           
+    <td>{{ game.price }}</td>
+    <td>{{ game.description }}</td>
+    <td>{{ game.status }}</td>
+	<td><a href="{{ path('add_game_to_shopping_cart',{'id':game.id}) }}" >AddToSC</a></td>
+</tr>
+#}
+
+<div id="game_{{ game.id }}" class="game row">
+	<div id="gameImage" class="gameImage col-md-3">
+		<a href="{{ path('game_show', { 'id': game.id }) }}">
+			<img alt="{{ game.name }}" src="{{ game.mainImage }}">
+		</a>
+	</div>
+	<div id="gameContaner" class="gameContaner col-md-9">
+		<div id="gameName" class="gameName">
+			<a href="{{ path('game_show', { 'id': game.id }) }}">{{ game.name }}</a>
+		</div>
+		{% if ref is defined %}
+			<a href="{{ path('remove_game_from_shopping_cart',{'id': game.id}) }}">RemoveFromSC</a>
+		{% endif %}
+		<div id="gamePrice" class="gamePrice">
+			{{ game.price }}
+		</div>
+		<div id="gameTags" class="gameTags">
+			<div id="gameCategory" class="gameCategory">
+				{{ game.category.name }}
+			</div>
+			<div id="gameGenre" class="gameGenre">
+				{{ game.genre }}
+			</div>
+		</div>
+	</div>
+</div>

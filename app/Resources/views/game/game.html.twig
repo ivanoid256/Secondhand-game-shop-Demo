@@ -1,0 +1,17 @@
+<div class="entity-instance common-block">
+	<a href="{{ path('game_show', { 'id': game.id }) }}">
+		<img src="{{ game.mainImage }}" alt="{{ game.name }}" class="instance-img" />
+	</a>
+	<div class="attrs">
+		<div class="top">
+			<a href="{{ path('game_show',{'id': game.id}) }}" class="name">{{ game.name }}</a>
+			<div class="price">{{ game.price }}</div>
+		</div>
+		<div class="bottom">
+			<div class="tags">
+				<a href="{{ path('category_games',{"id":game.category.id}) }}">{{ game.category.name }}</a>
+				<a href="{{ path('all_games',{"genre":game.genre}) }}">{{ game.genre }}</a>
+			</div>
+		</div>
+	</div>
+</div>

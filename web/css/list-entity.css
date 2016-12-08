@@ -1,0 +1,121 @@
+@CHARSET "UTF-8";
+
+.entities{
+
+float: left;
+
+margin: 8px 8px;
+
+width: 520px;
+}
+.entities:after{
+    
+height: 0px;
+}
+.entity-instance{
+
+/* border-bottom: inherit; */
+
+padding: 1px;
+
+/* position: relative; */
+
+height: 124px;
+
+margin-bottom: 10px;
+
+box-shadow: 2px 2px 6px 1px #444;
+}
+.entity-instance:after{
+    
+content: close-quote;
+    
+display: block;
+    
+clear: both;
+}
+.entity-instance .instance-img{
+
+float: left;
+
+/* display: inline-block; */
+
+/* position: absolute; */
+
+height: 100%;
+
+width: 200px;
+}
+.entity-instance .attrs{
+
+/* float: right; */
+
+/* width: 100%; */
+
+/* margin-right: -200px; */
+
+position: relative;
+
+/* position: absolute; */
+
+height: 100%;
+
+/* left: 200px; */
+
+/* top: 0px; */
+
+margin-left: 200px;
+
+/* border: 1px solid #ccc; */
+}
+.entity-instance .attrs .top{
+
+/* position: absolute; */
+
+/* top: 0px; */
+} 
+.entity-instance .attrs .name{
+
+}
+.entity-instance .attrs .price{
+
+float: right;
+
+font-size: 1.6em;
+}
+.entity-instance .attrs .bottom{
+
+position: absolute;
+
+bottom: 0px;
+}
+.entity-instance .attrs .tags{
+
+}
+.entity-instance .attrs a{
+    
+color: inherit;
+    
+text-decoration: inherit;
+    
+background-color: #444;
+    
+padding: 2px 2px;
+    
+display: inline-block;
+    
+margin: 1px;
+    
+border: 1px solid #999;
+}
+.entity-instance a:hover{
+    
+text-decoration: underline;
+}
+.entity-instance .attrs .tags a{
+    
+}
+tr div, td div {
+    width: 100%;
+    height: 100%;
+}

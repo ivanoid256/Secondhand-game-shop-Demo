@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %} Choose Your Game! {% endblock %}
+{% block categories %}
+	{% if categoryId is defined %}
+		{{ render(controller('AppBundle:Category:index',{"id":categoryId})) }}
+	{% else %}
+		{{ parent() }}
+	{% endif %}
+{% endblock %}
+{% block body %}
+    <h1>Game list</h1>
+
+	{{ include('game/filter.html.twig', { 'form': form }) }}
+    <table>
+        <thead>
+            <tr>
+            	<th>Name</th>
+            	<th>Seller</th>
+            	<th>Genre</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Issold</th>
+                <th>AddToSC</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+        <div id="gamesList" class="gamesList">
+        {% for game in games %}
+			{{ include('game/game.html.twig', { 'game': game }) }}
+        {% endfor %}
+        </div>
+    
+    
+{% endblock %}

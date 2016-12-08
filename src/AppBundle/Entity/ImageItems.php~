@@ -1,0 +1,32 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ImageItems
+ *
+ * @ORM\Table(name="image_items")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ImageItemsRepository")
+ */
+class ImageItems
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="Image",mappedBy="items")
+     */
+    private $images;
+
+}
+

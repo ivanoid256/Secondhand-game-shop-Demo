@@ -1,0 +1,109 @@
+{% extends is_granted('ROLE_ADMIN') ? 'admin/base.html.twig' : 'seller/base.html.twig' %}
+
+{% block title %}Order: {{ commission.orderNumber }} {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/seller/orders.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+<!--           
+                <th>Ordernumber</th>
+                <th>Datetime</th>
+                <th>Status</th>
+                <td>Sum</td>
+                <td>Seller</td>
+                <td>Customer</td>
+                <td>PaymentService</td>
+                <th>CustomerPayData</th>
+                <td>Games</td>-->
+<div class="show-order" style="width: 500px; margin: 8px; margin-top: 0;">
+		<h3>Order: {{ commission.orderNumber }}</h3>
+    	
+    	<table class="vertical-attr common-block">
+    	    <tbody>
+    	        <tr>
+    	            <th>OrderNumber</th>
+    	            <td>{{ commission.orderNumber }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Datetime</th>
+    	            <td>{% if commission.dateTime %}{{ commission.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Status</th>
+    	            <td>{{ commission.status }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Sum</th>
+    	            <td>{{ commission.sum }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Seller</th>
+    	            <td>{{ commission.seller.username }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>Customer</th>
+    	            <td>{{ commission.customer.username }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>PaymentService</th>
+    	            <td>{{ commission.payService }}</td>
+    	        </tr>
+    	        <tr>
+    	            <th>CustomerPayData</th>
+    	            <td>{{ commission.customerPayData|join('|') }}</td>
+    	        </tr>
+    	    </tbody>
+    	</table>
+    	 <h3>Games: </h3>   
+	
+		<div class="common-block btn-style-href order-games">
+			{% for game in commission.games %}
+		   		<a href="{{ path('game_show',{'id':game.id}) }}">{{ game.name }}</a>
+		   	{% endfor %}
+		</div>
+
+    	
+    	<ul class="btn-style-href common-block">
+    	{% if is_granted('ROLE_ADMIN') %}
+    		<li>
+    			<a id="confirm-order" href="{{ path('order_confirm',{'id':commission.id}) }}">Confirm Order</a>
+    		</li>
+    	{% endif %}
+    	   {# <li>
+    	        <a href="{{ path('commission_index') }}">Back to the list</a>
+    	    </li>#}
+    	</ul>
+    	
+    	{% if commission.comments is not empty %}<h3 class="comment-header">Comments: </h3> <a href="#comment"></a>  {% endif %} 
+		<div class="comments">
+			{% for comment in commission.comments %}
+			<div class="comment-box btn-style-href common-block">
+				<div class="from-to">
+					<span class="from">From: <a href="#">{{ comment.from.username }}</a> </span>
+					<span class="to">To: <a href="#">{{ comment.to.username }}</a> </span>
+				</div>
+				<div class="comment">{{ comment.text }}</div>
+			</div>
+		    {% endfor %}
+		</div>
+    	
+    	
+    	
+    	{% if is_granted('ROLE_ADMIN') %}
+    	<div class="common-block comment-form">
+    	    	{{ render(controller('AppBundle:Comment:newForAdmin',{'id':commission.id})) }}
+    	</div>
+    	{% elseif is_granted('ROLE_SELLER') %}
+    	<div class="common-block comment-form">
+    	    	{{ render(controller('AppBundle:Comment:newForSeller',{'id':commission.id})) }}
+    	</div>    
+    	{% elseif is_granted('ROLE_CUSTOMER') %}
+    	<div class="common-block comment-form">
+    	    	{{ render(controller('AppBundle:Comment:newForCustomer',{'id':commission.id})) }}
+    	</div>
+    	{% endif %}   
+    	</div>
+{% endblock %}

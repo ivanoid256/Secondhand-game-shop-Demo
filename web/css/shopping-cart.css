@@ -1,0 +1,67 @@
+@CHARSET "UTF-8";
+
+.scSellerGames{}
+
+.sellerTbl{}
+
+.seller{
+    margin: 0;
+    padding: 5px 7px;
+    position: absolute;
+    right: 17px;
+    top: -15px;
+    background-color: hsla(197,100%,30%,1);
+    color: #ccc;
+    border-radius: 3px;
+}
+.seller a{
+	color:inherit;
+	text-decoration: inherit;
+}
+.seller:hover{
+	text-decoration:underline;
+}
+
+.shoppingCartSeller{
+    padding: 2px;
+    padding-bottom: 0;
+    padding-top: 15px;
+    border: 2px hsla(197,100%,30%,1) solid;
+    margin-top: 15px;
+    position: relative;
+    background-color: #616161;
+}
+.shopping-cart{
+	float:left;
+	width: 60%;
+	margin: 8px;
+}
+.seller-tbl{
+	
+display: none;
+}
+
+.shopping-cart > h3:first-child{
+	margin:0;
+	padding: 3px;
+	background-color: hsla(197,100%,21%,1);
+	color: #ccc;
+}
+.total-sum{padding: 3px;padding-left: 3px;background-color: crimson;margin-bottom: 0;/* padding-bottom: 5px; */}
+.shopping-cart form input[type=submit]{
+	
+font-size: 1.1em;
+	
+background-color: crimson;
+}
+.shopping-cart form input[type=submit]:hover{
+	background-color:red;
+}
+.shopping-cart .scSellerGames .entity-instance:last-child{
+	margin-bottom: 3px;
+}
+.shopping-cart .purchase-form{
+	border: 1px crimson solid;
+	padding: 3px;
+	padding-top: 15px;
+}

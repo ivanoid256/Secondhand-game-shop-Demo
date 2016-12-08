@@ -1,0 +1,38 @@
+{% form_theme form 'form/checkbox_field.html.twig' %}
+
+<div class="filter-contaner common-block">  
+	
+	<a href="{{ path('all_games') }}" 
+		{% if clearFilter == true %} class="clear-filter"
+		{% else %} style="display:none"
+		{% endif %}
+	">Clear Filter</a>
+	
+{{ form_start(form) }}
+	<div class="entity-name-fltr fltr">
+		{{ form_widget(form.Name,{'attr':{'placeholder':'Enter entity name'}}) }}
+		{{ form_widget(form.Apply_Filter,{'attr':{'class':'apply-fltr-btn'}}) }}
+	</div>
+	
+	<div class="price-fltr fltr">
+		<div class="label fltr-label"><span>Price interval:</span></div>
+		<div class="filter">
+		    {{ form_widget(form.Min_price,{'attr':{'class':'min', 'placeholder':'Min $'}}) }}
+		 	{{ form_widget(form.Max_price,{'attr':{'class':'max', 'placeholder':'Max $'}}) }}
+		</div>
+	</div>
+	
+	<div class="genre-fltr checkbox-fltr fltr">
+		<div class="label fltr-label"><span>{{ form_label(form.Genre) }}</span></div>
+		{{ form_widget(form.Genre,{'attr':{'class':'checkbox-list genre-checkbox-list'}}) }}
+	</div>	
+
+	<div class="genre-fltr checkbox-fltr fltr">
+		<div class="label fltr-label"><span>{{ form_label(form.Category) }}</span></div>
+		{{ form_widget(form.Category,{'attr':{'class':'checkbox-list genre-checkbox-list'}}) }}
+	</div>
+
+	{{ form_widget(form.Apply_Filter_bottom,{'attr':{'class':'apply-fltr-btn'}}) }}
+	{{ form_rest(form) }}
+{{ form_end(form,{'render_rest':false}) }}
+</div>

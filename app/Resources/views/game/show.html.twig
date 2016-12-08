@@ -1,0 +1,120 @@
+{% extends 'customer/shopwindow.html.twig' %}
+
+{% block title %} {{ game.name }} {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/entity-card.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+<div class="entity">
+	<div class="entity-header"> 
+		<h3 class="entity-title">{{ game.name }}</h3>  
+		<a href="{{ path('add_game_to_shopping_cart',{"id":game.id}) }}" class="add-to-sc" id="add-to-sc" >Add To Shopping Cart</a>
+	</div>
+	<div class="image-attrs clearfix">
+		<img alt="entity-image" src="{{ game.mainImage }}">
+		<div class="attr-cntr">
+			<table class="attrs">
+			 <tr>
+			 	<td>Name</td>
+			 	<td>{{ game.name }}</td>
+			 </tr>
+			 <tr>
+			 	<td>Price</td>
+			 	<td>{{ game.price }}</td>		 
+			 </tr>
+			 <tr>
+			 	<td>Genre</td>
+			 	<td>{{ game.genre }}</td>
+			 </tr>
+			 <tr>
+			 	<td>Category</td>
+			 	<td>{{ game.category.name }}</td>		 
+			 </tr>
+			 <tr>
+			 	<td>Seller</td>
+			 	<td>{{ game.seller.username }}</td>		 
+			 </tr>
+			</table>
+		</div>
+	</div>
+	<div class="description">
+	{{ game.description }}Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima reiciendis commodi voluptate consequatur dolore possimus aut unde nulla voluptatem ab excepturi cum iusto debitis ipsam natus ad odit! Tempora corporis.
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. In eius ea dolore temporibus incidunt porro labore culpa quos voluptate aut accusantium magnam placeat sed animi voluptatem iusto fuga quis! Temporibus!
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius voluptate est iusto dicta architecto commodi quod modi delectus quasi expedita quas nesciunt tenetur praesentium sint fugit non et nostrum.
+	</div>
+	{% if game.images['0'] is defined %}
+	<div class="images">
+		<div class="large-images">
+			<input checked type="radio" name="image" id="imgradio{{ game.images['0'].id }}" />	
+			<img src="{{ game.images['0'].srcRef }}" alt="{{ game.images['0'].name }}" class="large-img" />
+		{% for i in 1..game.images.count-1 %}
+			<input type="radio" name="image" id="imgradio{{ game.images[i].id }}" />		
+			<img src="{{ game.images[i].srcRef }}" alt="{{ game.images[i].name }}" class="large-img" />
+		{% endfor %}
+			
+		</div>
+		<div class="thumbnails">
+			{% for image in game.images %}
+				<label for="imgradio{{ image.id }}"><img src="{{ image.srcRef }}" alt="{{ image.name }}" class="thumbnail" id="thumbnail{{ image.id }}" /></label>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}
+{#
+<div id="showGame" class="showGame">
+	<div id="showGameNamePrice" class="showGameNamePrice">
+		<div id="showGameName" class="showGameName">{{ game.name }}</div>
+		<div id="showGamePrice" class="showGamePrice">{{ game.price }}</div>
+		<a href="{{ path('add_game_to_shopping_cart',{'id':game.id}) }}" class="addToSC">AddToShoppingCart</a>
+	</div>
+	<div id="showGameFeatures" class="showGameFeatures clearfix">
+		<div id="mainImage" class="mainImage"><img src="{{ game.mainImage }}" alt="mainImage" /></div>
+		<div id="features" class="features">
+			<table>
+				<tr>
+					<td>Genre</td>
+					<td>{{ game.genre }}</td>
+				</tr>
+				<tr>
+					<td>Category</td>
+					<td>{{ game.category.name }}</td>
+				</tr>
+				<tr>
+					<td>Seller</td>
+					<td>{{ game.seller.username }}</td>
+				</tr>
+			</table>
+		</div>
+		<p id="description" class="description">{{ game.description }}
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officia sint alias iure inventore 
+		mollitia voluptatum dolorum asperiores eius cumque eligendi libero nulla provident et veritatis modi dolorem pariatur culpa?
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quaerat in eos vel est ducimus asperiores quos explicabo reprehenderit nobis fugiat quod esse rerum placeat quisquam molestiae architecto suscipit maxime.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni rerum magnam beatae quam ducimus consequatur laboriosam sit voluptate sequi deserunt earum tempore est placeat quaerat quae esse ullam unde sunt.
+		</p>
+	</div>
+	<div id="images" class="images">
+	{% for image in game.images %}
+		<img src="{{ image.srcRef }}" alt="{{ image.name }}" class="image" />
+	{% endfor %}
+	</div>
+</div>
+<br />
+<br />
+    <ul>
+        <li>
+            <a href="{{ path('all_games') }}">Back to the list of games</a>
+        </li>
+    </ul>
+{% endblock %}
+<!--            <th>Name</th>
+            	<th>Seller</th>
+            	<th>Genre</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Issold</th> -->
+#}

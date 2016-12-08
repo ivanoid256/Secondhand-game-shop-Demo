@@ -1,0 +1,85 @@
+@CHARSET "UTF-8";
+
+body{
+    /* padding: 30px; */
+    font-family: Sans-serif, Tahoma, Arial;
+}
+.entity{width: 620px;width: 550px;/* width: 49%; *//* background-color: rgba(0, 0, 0, 0.9); *//* color: #f4f4f4; *//* padding: 2px; *//* border: 1px #00b7ff solid; *//* box-shadow: 1px 1px 5px 1px #000; */margin-top: 8px;/* float: left; *//* margin-left: 8px; */}
+.image-attrs{border-bottom: 1px #ccc solid;}
+.image-attrs > img{float: left;width: 250px;}
+.entity .attrs{/* float: left; */width: 100%;/* width: 370px; *//* width: 300px; *//* margin-left: 250px; *//* border: 1px #ccc solid; */border-collapse: collapse;text-align: center;/* margin-right: -250px; *//* display: block; */}
+.entity .attr-cntr{
+  /* display:block; */
+  /* margin-left: 250px; */
+}
+.attrs  tr, .attrs td{
+  border-bottom: 1px #ccc solid;
+}
+.attrs tr:last-child, .attrs tr:last-child td{
+  border: none;
+}
+.description{text-align: justify;padding: 2px;margin-top: 5px;text-indent: 20px;}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.images{border-top: 1px solid #ccc;}
+.images input{display: none;}
+.images .large-images{position: relative;margin: 3px auto 0px;height: 300px;width: 500px;border: 2px solid #ddd;}
+.images .large-images .large-img{z-index: 0;position: absolute;/* background-color: rgba(248,248,248,0); */opacity: .5;transition: opacity .5s;width: 500px;height: 300px;}
+.images input:checked + .large-img{
+  z-index:1;
+  opacity: 1;
+}
+.images .thumbnails{
+  margin-top: 4px;
+  padding: 2px 5px 1px;
+  border-top: 1px solid #ccc;
+  height: 78px;
+  overflow: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  }
+.images .thumbnails label{cursor: pointer;display: inline-block;vertical-align: top;position: relative;height: 60px;/* width: 100px; *//* padding: 0px; *//* margin: 0px; */}
+.images .thumbnails label:hover::before{
+  /* border-left:1px solid crimson; */
+  /* border-right:1px solid crimson; */
+  content:close-quote;
+  box-shadow: inset 0 0 0 5px crimson;
+  /* -webkit-box-shadow: inset 0 0 5px red; */
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  position:absolute;
+}
+.images .thumbnails .thumbnail{
+  /* display: inline-block; */
+  height: 60px;
+  width: 100px;
+}
+.images .thumbs-cont{
+  height: 60px;
+  width: 540px;
+  overflow: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.entity .entity-title{
+  display:inline-block;
+  padding: 7px 7px;
+  margin: 0;
+  max-width: 300px;
+  cursor: default;
+}
+#edit-game{
+  float:right;
+  margin: 4px;
+}
+#edit-game:hover{
+  background-color: #4CAF50;
+}

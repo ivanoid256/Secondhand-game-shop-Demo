@@ -1,0 +1,225 @@
+@CHARSET "UTF-8";
+table th{
+	/* background-color:inherit; */
+}
+.order-box{
+	
+margin-bottom: 8px;
+	
+/* background-color: #999; */
+	
+position: relative;
+	
+width: 552px;
+	
+margin-top: 4px;
+}
+.my-orders h4{
+	background-color: hsla(197,100%,21%,1);
+	padding: 4px;
+	color:aliceblue;
+	margin-top:0px;
+}
+.my-orders{
+	
+float: left;
+	
+margin-left: 8px;
+	
+margin-top: 8px;
+}
+.order-box .order-number{
+	
+/* position: absolute; */
+	
+/* top: -25px; */
+	
+/* left: 20px; */
+	
+/* background-color: hsla(197,100%,21%,1); */
+	
+background-color: #f8f8f8;
+	
+/* border: 1px hsla(197,100%,40%,1) solid; */
+	
+/* border-bottom: none; */
+	
+padding: 5px 3px;
+	
+/* box-shadow: 0px 0px 6px 1px #444; */
+}
+
+.order-box .order-attrs{
+	
+border: 1px #ddd solid;
+	
+border-collapse: collapse;
+	
+float: left;
+	
+/* display: inline; */
+	
+width: 500px;
+	
+cursor: default;
+}
+
+.order-box .order-attrs td, .order-box .order-attrs th{
+	
+border-right: 1px #f8f8f8 solid;
+	
+/* padding: 2px 4px; */
+	
+/* text-align: center; */
+}
+.order-box .order-attrs th{
+	/* background-color: #616161; */
+}
+.order-box .price-box{
+	
+position: relative;
+	
+float: left;
+	
+font-size: 2.0em;
+	
+padding: 3px 4px;
+	
+/* border: 1px #ddd solid; */
+	
+margin-left: 2px;
+	
+/* display: inline; */
+	
+/* background-color: #444; */
+	
+margin-top: 6px;
+}
+.order-box .price-box .label{
+
+font-size: x-small;
+
+position: absolute;
+
+top: 0px;
+
+width: 110px;
+
+display: none;
+}
+.order-box .price-box .price{
+	
+}
+.order-box .games{
+	/* clear:both; */
+	padding: 4px 2px;
+	border-bottom: 1px #eeeeee solid;
+	border-top: 1px #eee solid;
+	border-left: 1px #ddd solid;
+}
+.order-box .games a{
+
+border: 1px #ddd solid;
+
+padding: 0px 4px;
+
+background-color: #f8f8f8;
+
+margin: 1px 0px;
+
+display: inline-block;
+}
+.order-box .games a:hover{
+	background-color: #ddd;
+}
+.order-box .wright-btns{
+
+}
+.order-box .wright-btns a{
+	/* border: 1px #999 solid; */
+	/* padding: 0px 4px; */
+	/* background-color: crimson; */
+	/* margin: 1px 0px; */
+	/* display: inline-block; */
+}
+.order-box .wright-btns a:hover{
+	/* background-color:red; */
+}
+.order-box a{
+	/* color:aliceblue; */
+	text-decoration:none;
+}
+.order-box a:hover{
+	text-decoration:underline;
+}
+.order-box .order-number a:hover{
+	/* background-color:rgba(0,0,0,.9); */
+}
+
+.show-order h3:nth-of-type(2) {
+	display:inline-block;
+	margin-top:3px;
+}
+.show-order table{
+	width:100%;
+}
+.show-order .comment-box{
+
+margin: 5px 0px;
+
+border-bottom: 1px #222 solid;
+}
+.show-order .comment-box .from-to {
+	
+border-bottom: 1px #ddd solid;
+}
+.show-order .comment-box .from-to span{
+	
+}
+.show-order .comment-box .comment{
+	text-align: justify;
+	padding: 1px;
+	margin-top: 5px;
+	text-indent: 20px;
+}
+.show-order .order-games a{
+	width: 23%;
+	border: 1px #ddd solid;
+	margin: 2px 0px;
+}
+
+#comment #comment_send{
+	margin: 0;
+	margin-left: 2px;
+	margin-bottom: 2px;
+}
+
+.order-box .order:after{
+	content:close-quote;
+	clear:both;
+	display: block;
+}
+
+.order-box .order-attrs tr:hover{
+	
+background-color: #fff;
+}
+
+.comment-header{
+	
+margin-top: 10px;
+	
+border-top: 1px #222 solid;
+}
+.comment-header + a{
+	
+display: none;
+}
+
+#comment select{
+	display:inline-block;
+}
+
+#confirm-order:hover{
+	background-color:#4CAF50;
+}

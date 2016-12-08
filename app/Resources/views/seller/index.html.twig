@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %} Sellers {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin/seller.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+    <h3>Sellers:</h3>
+
+    <table class="seller-list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Bankaccount</th>
+                <th>Balance</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for seller in sellers %}
+            <tr>
+                <td><a href="{{ path('seller_show', { 'id': seller.id }) }}">{{ seller.username }}</a></td>
+                <td>{{ seller.bankAccount }}</td>
+                <td>{{ seller.balance }}</td>
+                <td>{{ seller.status }}</td>
+                <td class="actions">
+                    <ul class="btn-style-href">
+                        <li>
+                            <a href="{{ path('seller_show',{'id':seller.id}) }}#comment_text">Send Message</a>
+                        </li>
+                        <li>
+                        {% if seller.status == seller.normal %}
+                            <a href="{{ path('ban_seller',{'id':seller.id,'status':'ban'}) }}">Ban Seller</a>
+                        {% elseif seller.status == seller.banned %}
+                            <a href="{{ path('ban_seller',{'id':seller.id,'status':'recover'}) }}">Recover Seller</a>
+                        {% else %}
+                        	<a href="{{ path('ban_seller',{'id':seller.id,'status':'ban'}) }}">Ban Seller</a>
+                        {% endif %}                        	
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

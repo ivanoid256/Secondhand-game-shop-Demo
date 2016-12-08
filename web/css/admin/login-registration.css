@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+.registration{
+		
+float: left;
+}
+.login{
+	/* float: right; */
+	margin-left: 0px;
+	/* min-height: 159px; */
+	position: relative;
+	max-width: 700px;
+}
+.login form:after{
+	content:close-quote;
+	display:block;
+	clear:both;
+}
+.registration, .login{
+	/* margin-top: 8px; */
+	/* margin-left: 4px; */
+	/* float: left; */
+	/* width: 39.4%; */
+	/* padding-bottom: 4px; */
+	display: inline-block;
+	width: 100%;
+}
+.registration table, .login table{
+	width: 100%;
+}
+.registration table td:first-child, .login table td:first-child{
+
+text-align: right;
+
+width: 75px;
+}
+.registration table td input, .login table td input{
+	width: 98%;
+}
+.registration input[type=submit], .login button[type=submit]{
+	float:right;
+}
+.registration h4, .login h4{
+	margin: 0;
+	background-color: hsla(197,100%,21%,1);
+	padding: 4px;
+}
+.registration form, .login form{
+	padding: 4px;
+	padding-top: 0px;
+}
+#login-as-seller{
+	
+position: absolute;
+	
+top: 0;
+	
+right: 0;
+}

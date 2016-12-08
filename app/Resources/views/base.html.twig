@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+        	<link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.css') }}">
+        	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="container">
+    <div id="hadder" class="header">
+    	<div id="headline" class="headline"></div>
+    	<div id="mainMenu" class="mainMenu">
+    		<div id="shoppingCart" class="shoppingCart">
+    			<a href="{{ path('shopping_cart') }}">Shopping Cart</a>
+    		</div>
+    		<div id="menuItems" class="menuItems">
+    			<div id="forSellerMenuItem" class="forSellerMenuItem" >
+    				<a href="#">For Seller</a>
+    				<ul id="forSellerItemsList" class="forSellerItemsList">
+    					<li><a href="{{ path('login') }}">Log In</a></li>
+    					<li><a href="{{ path('seller_new') }}">Registration</a></li>
+    				</ul>
+    			</div>
+    			{% if is_granted('ROLE_SELLER') %}
+    			<div id="addGameMenuItem" class="addGameMenuItem">
+    				<a href="{{ path('seller_game_new') }}">Add Game</a>
+    			</div>
+				{% endif %}
+    		</div>
+    	</div>
+    </div>
+    <div id="main" class="row main">
+    {% block leftSidebar %}
+    	<div id="leftSidebar" class="col-md-2 leftSidebar" >
+    	{% block categories %}
+    		{{ render(controller('AppBundle:Category:index')) }}
+    	{% endblock %}
+    	</div>
+     {% endblock %}
+    	<div id="rightBody" class="col-md-10 rightBody" >
+    		{% block body %}{% endblock %}	
+    	</div>
+    </div>
+        {% block javascripts %}
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+       	<script type="text/javascript">
+		if (typeof jQuery == 'undefined') {
+		  document.write(unescape("%3Cscript src='/js/jquery-3.0.0.min.js' type='text/javascript'%3E%3C/script%3E"));
+		}
+		</script>
+		<script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+        {% endblock %}
+    </body>
+</html>

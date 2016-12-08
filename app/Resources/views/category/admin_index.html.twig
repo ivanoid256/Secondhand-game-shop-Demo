@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %} Manage Category {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin/category.css') }}" media="all" />
+{% endblock %} 
+
+{% block content %}
+
+<div class="create-category">
+	{{ render(controller('AppBundle:Category:new')) }}
+</div>
+
+<div class="admin-categories">
+	<ul class="categories btn-style-href">
+	{% for category in categories %}
+		<li id="category{{ category.id }}" class="category">
+			<a href="{{ path('category_games', { 'id': category.id }) }}">{{ category.name }}</a>
+		</li>
+	{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}

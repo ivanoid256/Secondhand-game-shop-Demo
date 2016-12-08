@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>{% block title %}Admin Area{% endblock %}</title>
+	{% block stylesheets %}
+		<link rel="stylesheet" href="{{ asset('css/admin/common.css') }}" media="all" />
+		<link rel="stylesheet" href="{{ asset('css/admin/header.css') }}" media="all" />
+		<link rel="stylesheet" href="{{ asset('css/admin/nav.css') }}" media="all" />
+	{% endblock %}
+	<style type="text/css">
+		{% block style %}{% endblock %}	
+	</style>
+</head>
+<body>
+<div class="main">
+	<div class="header">
+		
+	</div>
+	<div>
+		<div class="left-side-bar">
+			<div class="navigation">
+				<ul class="level0">
+					<li><a href="{{ path('admin_orders') }}">Dashboard</a></li>
+					<li class="expandable">
+						<a class="expand" href="#">Orders</a>
+						<ul class="embeded">
+							<li><a href="{{ path('admin_orders') }}">Orders List</a></li>
+							<li><a href="#">Option_22</a></li>
+							<li><a href="#">Option_23</a></li>
+							<li><a href="#">Option_24</a></li>
+							<li><a href="{{ path('dead_orders') }}">Dead Orders</a></li>
+						</ul>
+					</li>
+					<li class="expandable">
+						<a class="expand" href="#">Sellers</a>
+						<ul class="embeded">
+							<li><a href="{{ path('seller_index') }}">Seller List</a></li>
+							<li><a href="#">Option_NN</a></li>
+						</ul>					
+					</li>					
+					<li><a href="#">Option_4</a></li>
+					<li class="expandable">
+						<a class="expand" href="#">Categories</a>
+						<ul class="embeded">
+							<li><a href="{{ path('admin_category') }}">Category List</a></li>
+							<li><a href="#">Create Category</a></li>
+						</ul>					
+					</li>
+				</ul>			
+			</div>
+		</div>
+		<div class="content">
+			{% block content %} {% endblock %}	
+		</div>
+	</div>
+</div>
+{% block javascript %}
+
+{% endblock %}
+</body>
+</html>

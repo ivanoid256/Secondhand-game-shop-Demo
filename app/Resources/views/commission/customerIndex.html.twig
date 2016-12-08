@@ -1,0 +1,18 @@
+{% extends 'customer/shopwindow.html.twig' %}
+{% block title %} My Orders{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/orders.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+	<div class="my-orders">
+		<h4>My Orders</h4>
+		<div class="orders">
+			{% for order in orders %}
+				{{ include('commission/list_order.html.twig',{'order':order}) }}
+			{% endfor %}		
+		</div>
+	</div>
+{% endblock %}

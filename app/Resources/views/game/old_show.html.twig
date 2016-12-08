@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ game.name }} {% endblock %}
+{% block body %}
+<!--            <th>Name</th>
+            	<th>Seller</th>
+            	<th>Genre</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Issold</th> -->
+
+<div id="showGame" class="showGame">
+	<div id="showGameNamePrice" class="showGameNamePrice">
+		<div id="showGameName" class="showGameName">{{ game.name }}</div>
+		<div id="showGamePrice" class="showGamePrice">{{ game.price }}</div>
+		<a href="{{ path('add_game_to_shopping_cart',{'id':game.id}) }}" class="addToSC">AddToShoppingCart</a>
+	</div>
+	<div id="showGameFeatures" class="showGameFeatures clearfix">
+		<div id="mainImage" class="mainImage"><img src="{{ game.mainImage }}" alt="mainImage" /></div>
+		<div id="features" class="features">
+			<table>
+				<tr>
+					<td>Genre</td>
+					<td>{{ game.genre }}</td>
+				</tr>
+				<tr>
+					<td>Category</td>
+					<td>{{ game.category.name }}</td>
+				</tr>
+				<tr>
+					<td>Seller</td>
+					<td>{{ game.seller.username }}</td>
+				</tr>
+			</table>
+		</div>
+		<p id="description" class="description">{{ game.description }}
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam officia sint alias iure inventore 
+		mollitia voluptatum dolorum asperiores eius cumque eligendi libero nulla provident et veritatis modi dolorem pariatur culpa?
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quaerat in eos vel est ducimus asperiores quos explicabo reprehenderit nobis fugiat quod esse rerum placeat quisquam molestiae architecto suscipit maxime.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni rerum magnam beatae quam ducimus consequatur laboriosam sit voluptate sequi deserunt earum tempore est placeat quaerat quae esse ullam unde sunt.
+		</p>
+	</div>
+	<div id="images" class="images">
+	{% for image in game.images %}
+		<img src="{{ image.srcRef }}" alt="{{ image.name }}" class="image" />
+	{% endfor %}
+	</div>
+</div>
+<br />
+<br />
+    <ul>
+        <li>
+            <a href="{{ path('all_games') }}">Back to the list of games</a>
+        </li>
+    </ul>
+{% endblock %}

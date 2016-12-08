@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+
+.filter-contaner{float: right;width: 245px;margin-top: 8px;padding: 5px;}
+.fltr{
+	padding-bottom: 8px;
+	margin-bottom: 2px;
+	border-bottom: 2px solid #0086bb;
+}
+.entity-name-fltr{}
+.entity-name-fltr input[type="text"]{
+    width: 96%;
+    height: 30px;
+    font-size: 1.1em;
+}
+.entity-name-fltr input[type="submit"], .apply-fltr-btn{
+    margin-top: 4px;
+    width: 100%;
+}
+.clear-filter{text-decoration: blink;display: block;text-align: center;margin-bottom: 3px;padding: 0;height: initial;background-color: hsla(197,100%,23%,1);padding: 1px 0px;color: #ccc;}
+.clear-filter:hover{
+	background-color: hsla(197,100%,30%,1);
+}
+.fltr-label{
+	text-align: center;
+	border: 1px solid hsl(0, 0%, 38%);
+	background-color: #282829;
+	margin-bottom: 2px;
+}
+.price-fltr{margin-top: 4px;}
+.price-fltr .label{
+	width: 99%;
+}
+.price-fltr .filter{margin: auto;}
+.price-fltr .filter span{display: none;}
+.price-fltr .filter .min, .price-fltr .filter .max{width: 44%;/* padding: 0px; */}
+.price-fltr .filter .min{
+
+}
+.price-fltr .filter .input-group{
+	display:inline-block;
+	width: 49%;
+}
+.price-fltr .filter .max{width: 45%;}
+.checkbox-fltr{margin-top: 7px;}
+.checkbox-fltr .label{
+
+}
+.checkbox-fltr .label span{
+
+}
+.checkbox-fltr .checkbox-list{/* background-color: #383838; */height: 200px;overflow: overlay;}
+.checkbox-fltr .checkbox-list label{border: 1px solid #616161;margin-bottom: 1px;background-color: #383838;display: block;cursor: pointer;/* border-bottom: none; */}
+.checkbox-fltr .checkbox-list label input{/* position: absolute; */float: left;}
+.checkbox-fltr .checkbox-list label span{
+	display: inherit;
+	padding-left: 21px;
+}
+.checkbox-fltr .checkbox-list label span:hover{
+	background-color: #282829;
+}
+.checkbox-fltr .checkbox-list label input:checked + span{
+	background-color:crimson;
+}

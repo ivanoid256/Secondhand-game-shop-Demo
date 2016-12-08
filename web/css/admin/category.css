@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+.create-category #category_name{
+	
+width: 400px;
+	
+/* display: inline-block; */
+	
+/* margin: 0px; */
+}
+.create-category #category_add{margin: 4px;/* margin-bottom: 0px; *//* height: 34px; *//* box-sizing: border-box; */padding: 11px 20px;padding-bottom: 9px;}
+
+.create-category #category > div{
+	display:inline-block;
+}
+
+.categories{
+	
+}

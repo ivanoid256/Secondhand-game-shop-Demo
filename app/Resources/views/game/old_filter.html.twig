@@ -1,0 +1,40 @@
+<h1>Filter Games: </h1>
+<div id="gameFilter">
+    {{ form_start(form) }}
+    	{{ form_widget(form) }}
+      {#  {% form_theme form 'bootstrap_3_layout.html.twig' %}
+      {{ form_row(form.Max_price) }}
+        {{ form_row(form.Min_price) }}
+        {{ form_row(form.Seller) }}
+        {{ form_row(form.Genre) }}
+    
+     form.Genre.vars.value
+    <div class="form-group"><label class="control-label">Genre</label>
+    <div id="game_filter_Genre">
+    {% set index = 0 %}
+    {% set colCount = 2 %}
+    <table>
+    <tbody>
+    <tr>
+    {% for choice in form.Genre.vars.choices %}     
+    {% if index is divisible by(colCount) and index != 0 %}
+    	</tr><tr>
+    {% endif %}
+    <td>
+    <div class="checkbox">                                                            
+        <label class=""><input type="checkbox" id="{{ form.Genre.vars.id~'_'~index }}" name="{{ form.Genre.vars.full_name~'[]' }}" 
+        	value="{{ choice.value }}" /> {{ choice.label }}</label>
+    </div>
+    </td>
+    {% set index = index + 1 %}
+    {% endfor %}
+	</tr>
+	</tbody>
+    </table>
+    </div></div>
+    	{{ form_row(form.Apply_Filter) }}
+    	, {'render_rest': false}
+    #}
+    {{ form_end(form) }}
+</div>
+<br>

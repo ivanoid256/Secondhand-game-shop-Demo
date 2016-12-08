@@ -1,0 +1,80 @@
+{% extends 'seller/base.html.twig' %}
+
+{% block title %} {{ game.name }} {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/seller/game-card.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+<div class="entity common-block">
+	<div class="entity-header btn-style-href"> 
+		<h3 class="entity-title">{{ game.name }}</h3>  
+		<a href="{{ path('seller_game_edit',{"id":game.id}) }}" class="edit-game" id="edit-game" >Edit</a>
+	</div>
+	<div class="image-attrs clearfix">
+{# 		<img alt="entity-image" src="{{ game.mainImage }}">#}
+		<div class="attr-cntr">
+			<table class="attrs">
+			 <tr>
+			 	<td>Name</td>
+			 	<td>{{ game.name }}</td>
+			 </tr>
+			 <tr>
+			 	<td>Price</td>
+			 	<td>{{ game.price }}</td>		 
+			 </tr>
+			 <tr>
+			 	<td>Genre</td>
+			 	<td>{{ game.genre }}</td>
+			 </tr>
+			 <tr>
+			 	<td>Category</td>
+			 	<td>{{ game.category.name }}</td>		 
+			 </tr>
+			 <tr>
+			 	<td>Seller</td>
+			 	<td>{{ game.seller.username }}</td>		 
+			 </tr>
+			 <tr>
+			 	<td>Status</td>
+			 	<td>{{ game.status }}</td>		 
+			 </tr>
+			 {% if game.commission %}
+			 <tr>
+			 	<td>Order N</td>
+                <td><a href="{{ path('seller_order',{'id':game.commission.id}) }}">{{ game.commission.orderNumber }}</a></td>
+			 </tr>
+			 {% endif %}
+			</table>
+		</div>
+	</div>
+	<div class="description">
+	{{ game.description }}Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima reiciendis commodi voluptate consequatur dolore possimus aut unde nulla voluptatem ab excepturi cum iusto debitis ipsam natus ad odit! Tempora corporis.
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. In eius ea dolore temporibus incidunt porro labore culpa quos voluptate aut accusantium magnam placeat sed animi voluptatem iusto fuga quis! Temporibus!
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius voluptate est iusto dicta architecto commodi quod modi delectus quasi expedita quas nesciunt tenetur praesentium sint fugit non et nostrum.
+	</div>
+	{% if game.images['0'] is defined %}
+	<div class="images">
+		<div class="large-images">
+		{% if game.images['0'] is defined %}
+			<input checked type="radio" name="image" id="imgradio{{ game.images['0'].id }}" />	
+			<img src="{{ game.images['0'].srcRef }}" alt="{{ game.images['0'].name }}" class="large-img" />
+		{% endif %}
+		{% if game.images['1'] is defined %}
+			{% for i in 1..game.images.count-1 %}
+				<input type="radio" name="image" id="imgradio{{ game.images[i].id }}" />		
+				<img src="{{ game.images[i].srcRef }}" alt="{{ game.images[i].name }}" class="large-img" />
+			{% endfor %}
+		{% endif %}	
+		</div>
+		<div class="thumbnails">
+			{% for image in game.images %}
+				<label for="imgradio{{ image.id }}"><img src="{{ image.srcRef }}" alt="{{ image.name }}" class="thumbnail" id="thumbnail{{ image.id }}" /></label>
+			{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

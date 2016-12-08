@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+			{% if is_granted('ROLE_SELLER') %}
+	        	<link rel="stylesheet" href="{{ asset('css/seller/common.css') }}" media="all" />
+	        	<link rel="stylesheet" href="{{ asset('css/seller/header-nav.css') }}" />
+				<link rel="stylesheet" href="{{ asset('css/seller/categories.css') }}" />	
+			{% else %}
+	        	<link rel="stylesheet" href="{{ asset('css/customer-common.css') }}" media="all" />
+	        	<link rel="stylesheet" href="{{ asset('css/header-nav.css') }}" />
+				<link rel="stylesheet" href="{{ asset('css/categories.css') }}" />					
+			{% endif %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}" />
+        <style type="text/css">{% block style %}{% endblock %}</style>
+    </head>
+    <body class="container">
+<div class="main">   
+    <div class="header">
+		<div class="top">
+			<div class="auth">
+				<input type="text" id="login" placeholder="Login" />
+				<input type="password" id="pass" placeholder="Password" />
+				<input type="submit" id="enter" value="Log In" />
+			</div>
+		</div>
+		<div class="nav">
+			<div class="left-nav">
+				<ul>
+					<li><a href="{{ path('all_games') }}">Games</a></li>
+				
+					<li><a href="#">Item_2</a></li>
+					<li><a href="#">Item_3</a></li>
+					<li><a href="#">Item_4</a></li>
+					{% if is_granted('ROLE_SELLER') %} 					
+						<li><a href="{{ path('seller_game_new') }}">Add Game</a></li>
+						<li><a href="{{ path('seller_game_index') }}">My Games</a></li>
+					{% endif %}					
+				</ul>
+			</div>
+			<div class="right-nav">
+				<ul>
+					<li><a href="#">Item_1</a></li>
+					{% if is_granted('ROLE_CUSTOMER') %}
+						<li><a href="{{ path('customer_orders') }}">My Orders</a></li>
+					{% endif %}
+					{% if is_granted('ROLE_CUSTOMER') or not app.user %}
+						<li><a href="{{ path('shopping_cart') }}">Shopping Cart</a></li>
+					{% endif %}
+					{% if is_granted('ROLE_SELLER') %} 					
+						<li><a href="{{ path('seller_orders') }}">My Orders</a></li>
+					{% endif %}	
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	{% block body %}{% endblock %}
+</div>
+{% block javascript %}
+
+{% endblock %} 
+</body>

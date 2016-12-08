@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Orders{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin/orders.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+	<div class="my-orders">
+		<h3>Orders</h3>
+		<div class="dead-orders">
+		{% if orders is not empty %}
+			<div class="remove-dead-orders btn-style-href"><a href="{{ path('remove_dead_orders') }}">Remove Dead Orders</a></div>
+			<div class="orders">
+				{% for order in orders %}
+			{# 				{% block order %} {% endblock %}#}
+					{{ include('commission/admin_list_order.html.twig',{'order':order}) }}
+				{% endfor %}		
+			</div>			
+		{% else %}
+			<div class="do-not-exist">There're no Dead Orders</div>
+		{% endif %}
+		</div>
+	</div>
+{% endblock %}

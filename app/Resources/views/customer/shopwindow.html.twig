@@ -1,0 +1,6 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+	{{ render(controller('AppBundle:Category:index')) }}
+	{% block content %} {% endblock %}
+{% endblock %}

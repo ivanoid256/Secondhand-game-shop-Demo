@@ -1,0 +1,33 @@
+{% extends 'customer/shopwindow.html.twig' %}
+
+{% block title %} Choose Your Game! {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/list-entity.css') }}" media="all" />
+	<link rel="stylesheet" href="{{ asset('css/filter-form.css') }}" media="all" />
+{% endblock %}
+
+{% block style %}
+	{% if categoryId is defined %}
+		#category{{ categoryId }}{
+		    border-left: 5px solid crimson;
+    		padding-left: 8px;
+		}
+	{% endif %}
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+	<div class="entities">
+	{% for game in games %}
+		{{ include('game/game.html.twig', { 'game': game }) }}
+	{% endfor %}
+		<div class="pagination">
+			{{ knp_pagination_render(games) }}
+		</div>
+	</div>
+	
+	{{ include('game/filter.html.twig',{"form":form}) }}
+	
+{% endblock %}

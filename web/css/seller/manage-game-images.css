@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+
+.mi-full-size-ref{
+    
+position: absolute;
+    
+right: 0;
+    
+top: 0;
+    
+background-color: #ddd;
+    
+padding: 3px 6px;
+    
+border-radius: 0px 0px 0px 17px;
+    
+opacity: 0;
+    
+transition: opacity .3s;
+    
+transition-timing-function: ease-in;
+}
+.manage-images{}
+
+.manage-images-header{
+    background-color: #f8f8f8;
+}
+
+.images{}
+
+.mi-ul{}
+
+.mi-li{
+    display: inline-block;
+    position: relative;
+}
+.mi-li:hover > .mi-full-size-ref{
+    opacity: 1;
+}
+.mi-checkbox, 
+.images input[type=checkbox],
+.images input[type=radio]
+{
+    display: none;
+}
+
+.mi-label{
+    /* width: 200px; */
+    display: inline-block;
+}
+
+.mi-image{
+    width: 320px;
+    height: 180px;
+    /* display: inline-block; */
+    cursor: pointer;
+}
+
+.mi-checkbox:checked + .mi-label> .mi-image,
+.images input[type=checkbox]:checked + .mi-image,
+.images input[type=radio]:checked + .mi-image
+{
+    outline:3px crimson solid;
+}
+.upload-images{
+
+float: right;
+
+border-left: 1px #ccc solid;
+
+padding-left: 4px;
+}
+
+.upload-image-form{
+
+background-color: #f8f8f8;
+
+padding: 0px;
+}
+.upload-image-form label{
+
+padding-right: 4px;
+}
+.upload-image-form #form_Images{
+    
+display: inline-block;
+}
+
+.upload-image-form #form_Images_images{
+    
+padding: 2px;
+}
+
+.upload-image-form #form_Send{
+    
+/* display: inline-block; */
+    
+padding-top: 5px;
+    
+padding-bottom: 5px;
+    
+margin-left: 3px;
+}
+.upload-image-form #form > div{
+    display:inline-block;
+}
+.manage-images-header h3{
+    display:inline-block;
+}
+.current-main-image{
+}
+.main-image{
+height: 370px;
+max-width: 658px;
+margin: 3px auto 3px;
+display: block;
+outline: 2px #aaa solid;
+}

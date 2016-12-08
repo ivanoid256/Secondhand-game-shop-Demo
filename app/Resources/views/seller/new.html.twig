@@ -1,0 +1,11 @@
+<div class="registration common-block">
+    <h4>Seller Registration</h4>
+
+    {{ form_start(form,{'action':path('login')}) }}
+		{{ form_row(form.username,{'label':'Name','attr':{'placeholder':'Name'}}) }}
+        {{ form_row(form.password,{'attr':{'placeholder':'Password'}}) }}
+        {{ form_row(form.email,{'attr':{'placeholder':'Email'}}) }}
+        {{ form_row(form.bankAccount,{'attr':{'placeholder':'bankAccountNumber'}}) }}
+        <input type="submit" value="Register" />
+    {{ form_end(form) }}
+</div>

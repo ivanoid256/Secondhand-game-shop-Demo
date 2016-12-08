@@ -1,0 +1,19 @@
+{% extends 'admin/base.html.twig' %}
+{% block title %}Orders{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/admin/orders.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+	<div class="my-orders">
+		<h3>Orders</h3>
+		<div class="orders">
+			{% for order in orders %}
+{# 				{% block order %} {% endblock %}#}
+				{{ include('commission/admin_list_order.html.twig',{'order':order}) }}
+			{% endfor %}		
+		</div>
+	</div>
+{% endblock %}

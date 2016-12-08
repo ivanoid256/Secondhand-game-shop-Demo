@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Orders list</h1>
+{% for orderPackage in orderPackages %}
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Status</th>
+    <th>Sum</th>
+    <th>CustomerPayData</th>
+  </tr>
+  <tr>
+    <td>{{ orderPackage.id }}</td>
+    <td>{{ orderPackage.status }}</td>
+    <td>{{ orderPackage.sum }}</td>
+	<td>{{ orderPackage.customerPayData|join('|') }}</td>
+  </tr>
+</table>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ordernumber</th>
+                <th>Datetime</th>
+                <th>Status</th>
+                <th>CustomerPayData</th>
+                <td>Sum</td>
+                <td>Seller</td>
+                <td>Customer</td>
+                <td>PaymentService</td>
+                <td>Games</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commission in orderPackage.orders %}
+            <tr>
+            {% if is_granted('ROLE_CUSTOMER') %}
+                <td><a href="{{ path('customer_order', { 'id': commission.id }) }}">{{ commission.orderNumber }}</a></td>
+            {% endif %}
+            {% if is_granted('ROLE_SELLER') %}
+                <td><a href="{{ path('seller_order', { 'id': commission.id }) }}">{{ commission.orderNumber }}</a></td>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <td><a href="{{ path('admin_order', { 'id': commission.id }) }}">{{ commission.orderNumber }}</a></td>
+            {% endif %}
+                <td>{% if commission.dateTime %}{{ commission.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ commission.status }}</td>
+                <td>{{ commission.customerPayData|join('|') }}</td>
+                <td>{{ commission.sum }}</td>
+                <td>{{ commission.seller.username }}</td>
+                <td>{{ commission.customer.username }}</td>
+                <td>{{ commission.payService }}</td>
+                <td>
+                {% for game in commission.games %}
+                
+                	<a href="{{ path('game_show',{'id':game.id}) }}">{{ game.name }}</a>
+                
+                {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endfor %} 
+{% endblock %}

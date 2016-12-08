@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Order list</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Ordernumber</th>
+                <th>Datetime</th>
+                <th>Status</th>
+                <th>CustomerPayData</th>
+                <td>Sum</td>
+                <td>Seller</td>
+                <td>Customer</td>
+                <td>PaymentService</td>
+                <td>Games</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+            {% if is_granted('ROLE_CUSTOMER') %}
+                <td><a href="{{ path('customer_order', { 'id': order.id }) }}">{{ order.orderNumber }}</a></td>
+            {% endif %}
+            {% if is_granted('ROLE_SELLER') %}
+                <td><a href="{{ path('seller_order', { 'id': order.id }) }}">{{ order.orderNumber }}</a></td>
+            {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <td><a href="{{ path('admin_order', { 'id': order.id }) }}">{{ order.orderNumber }}</a></td>
+            {% endif %}
+                <td>{% if order.dateTime %}{{ order.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.customerPayData|join('|') }}</td>
+                <td>{{ order.sum }}</td>
+                <td>{{ order.seller.username }}</td>
+                <td>{{ order.customer.username }}</td>
+                <td>{{ order.payService }}</td>
+                <td>
+                {% for game in order.games %}
+                
+                	<a href="{{ path('game_show',{'id':game.id}) }}">{{ game.name }}</a>
+                
+                {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ 
+{% endblock %}

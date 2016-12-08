@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+
+.add-game{
+	
+/* float: left; */
+	
+/* padding: 4px; */
+	
+display: inline-block;
+	
+/* padding-right: 4px; */
+	
+margin-top: 6px;
+	
+width: 60%;
+}
+.add-game form{
+	/* padding: 4px; */
+	/* padding-right: 0px; */
+	/* padding-left: 3px; */
+}
+/*.add-game #add_game_Add:hover{
+	background-color: #E91E63;
+}*/
+
+.add-game .game-form-add-btn:hover, .delete-game .game-delete-btn:hover{
+	background-color: #E91E63;
+}
+.add-game .game-form-edit-btn:hover{
+	background-color: #4CAF50;
+}
+.delete-game{
+	
+/* display: inline-block; */
+	
+margin-top: 5px;
+	
+width: 60%;
+}
+
+.edit-game-header{
+	background-color:#f8f8f8;
+}
+.edit-game-header > h3{
+	display:inline-block;
+}
+.edit-game-header > a{
+	float:right;
+}

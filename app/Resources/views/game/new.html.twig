@@ -1,0 +1,20 @@
+{% extends 'seller/base.html.twig' %}
+
+{% block title %} Add Game for Sell {% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/seller/add-game.css') }}" media="all" />
+{% endblock %}
+
+{% block content %}
+   	<div class="add-game common-block"> 
+   		<h3>Fill the form to add a game for sell</h3>
+   		   	
+    	{{ form_start(form) }}
+    	    {{ form_widget(form) }}
+    	{{ form_end(form) }}
+    	
+	</div>
+
+{% endblock %}

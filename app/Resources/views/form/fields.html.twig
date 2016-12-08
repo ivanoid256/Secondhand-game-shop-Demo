@@ -1,0 +1,63 @@
+{%- block image_entity_widget -%}
+	<ul class="mi-ul">
+		{% for child in form %}	
+		{% set srcRef = child.vars.label %}	
+			<li class="mi-li">
+				<a class="mi-full-size-ref" target="_blank" href="{{ srcRef }}">show in full size</a>
+{# 				<input id="mi-checkbox{{ loop.index }}" type="checkbox" class="mi-checkbox" /> for="mi-checkbox{{ loop.index }}" #}
+				<label class="mi-label">
+					{{ form_widget(child) }}
+					<img src="{{ srcRef }}" alt="{{ srcRef }}" class="mi-image" />
+				</label>
+			</li>
+		{% endfor %}		
+	</ul>
+{%- endblock -%}
+
+{%- block table_choice_widget -%}
+	{% set index = 0 %}
+    {% set colCount = 2 %}
+    {% if '-inline' in label_attr.class|default('') -%}
+        <div class="control-group">
+    <table>
+    <tbody>
+    <tr>
+            {%- for child in form %}
+                {% if index is divisible by(columns_count) and index != 0 %}
+    				</tr><tr>
+    			{% endif %}
+    			<td>
+                {{- form_widget(child, {
+                    parent_label_class: label_attr.class|default(''),
+                    translation_domain: choice_translation_domain,
+                }) -}}
+                </td>
+            {% set index = index + 1 %}
+            {% endfor -%}
+    </tr>
+	</tbody>
+    </table>
+        </div>
+    {%- else -%}
+        <div {{ block('widget_container_attributes') }}>
+    <table>
+    <tbody>
+    <tr>
+            {%- for child in form %}
+                {% if index is divisible by(columns_count) and index != 0 %}
+    				</tr><tr>
+   				{% endif %}
+   				<td>
+                {{- form_widget(child, {
+                    parent_label_class: label_attr.class|default(''),
+                    translation_domain: choice_translation_domain,
+                }) -}}
+                </td>
+            {% set index = index + 1 %}
+            {% endfor -%}
+	</tr>
+	</tbody>
+    </table>
+        </div>
+    {%- endif %}
+{%- endblock table_choice_widget -%}
