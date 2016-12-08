@@ -1,4 +1,4 @@
-secondhand_game_shop_generated
-==============================
+This is simple project created to prove my skills, but you can create you own secondhand game shop based on this code.
 
-A Symfony project created on May 3, 2016, 2:12 pm.
+There are directories with source code created by me: app, src, web.
+Other files contain Symfony Framework code.
